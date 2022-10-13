@@ -1,4 +1,3 @@
-import { ObjectId } from "bson"
 import CommentsDAO from "../src/dao/commentsDAO"
 import MoviesDAO from "../src/dao/moviesDAO"
 
@@ -36,7 +35,7 @@ describe("Create/Update Comments", () => {
     const commentsCollection = await global.mflixClient
       .db(process.env.MFLIX_NS)
       .collection("comments")
-    const deleteResult = await commentsCollection.deleteMany({
+    await commentsCollection.deleteMany({
       text: "fa-fe-fi-fo-fum",
     })
   })

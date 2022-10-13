@@ -1,4 +1,3 @@
-import { ObjectId } from "mongodb"
 describe("Error Handling", () => {
   /* Hello!
    * In this lesson we are going to talk about Error Handling. We will cover a
@@ -53,7 +52,7 @@ describe("Error Handling", () => {
 
     // and what if we tried to insert a document with the same _id?
     try {
-      let dupId = await errors.insertOne({
+      await errors.insertOne({
         _id: 0,
       })
     } catch (e) {
@@ -74,7 +73,7 @@ describe("Error Handling", () => {
    */
   it("avoids duplicateKey", async () => {
     try {
-      let notdupId = await errors.insertOne({
+      await errors.insertOne({
         _id: 3,
       })
     } catch (e) {
@@ -101,7 +100,7 @@ describe("Error Handling", () => {
 
   it("timeout", async () => {
     try {
-      let dupId = await errors.insertOne(
+      await errors.insertOne(
         {
           _id: 6,
         },
@@ -130,7 +129,7 @@ describe("Error Handling", () => {
 
   it("WriteConcernError", async () => {
     try {
-      let dupId = await errors.insertOne(
+      await errors.insertOne(
         {
           _id: 6,
         },
